@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: my-app-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      enabled: true
+      routes:
+        #表示websocket的转发
+        - id: app-metadata-websocket
+          uri: lb:ws://app-metadata
+          predicates: Path=/web/websocket/**
+          filters: StripPrefix=1
+
+        - id: app-metadata
+          uri: lb://app-metadata
+          predicates: Path=/api/**
+          filters: StripPrefix=1
+

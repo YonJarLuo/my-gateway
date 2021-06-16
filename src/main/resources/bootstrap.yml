@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+      discovery:
+        namespace: luoyj-mvp
+        server-addr: 8.129.4.92:8848
